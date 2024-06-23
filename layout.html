@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="libs/angular.min.js"></script>
+    <script src="libs/angular-route.min.js"></script>
+    <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="controllers/AddProductController.js"></script>
+    <script src="controllers/ListProductController.js"></script>
+    <script src="controllers/EditProductController.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid ">
+                <a class="nav-link active" aria-current="page" href="#!/home-product" style="color: rgb(224, 1, 1);">
+                    <h6>
+                        Trang chủ
+                    </h6>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#!/list-product"
+                                style="color: rgb(224, 1, 1);">
+                                <h6>
+                                    Admin
+                                </h6>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <header>
+            <img class="pull-right" src="../img/Banner.jpg" alt="" style="width: 100%;">
+        </header>
+        <div class="container" style="margin: 5%;">
+            <div class="row" ng-view>
+                <!-- Nội dung của bạn sẽ được đặt ở đây -->
+            </div>
+        </div>
+        <footer class="footer footer_bg_1 " style="background-color: papayawhip; border-top: 1px black solid;">
+            <div class="footer_top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-4 col-md-6 col-lg-4">
+                            <div class="footer_widget">
+                                <h3>NHÀ XUẤT BẢN TỔNG HỢP TP.HỒ CHÍ MINH</h3>
+                                <div class="socail_links">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-facebook fa-2x"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-twitter fa-2x"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-instagram-square fa-2x"
+                                                    style="color: rgb(206, 31, 127);"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fab fa-youtube fa-2x " style="color: red;"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-lg-4">
+                        </div>
+                        <div class=" col-lg-4">
+                            <div class="footer_widget">
+                                <h3 class="footer_title">
+                                    Address
+                                </h3>
+                                <p>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Nguyễn Trường Nam, Nam Từ Liêm, Hà Nội<br>
+                                    <i class="fas fa-phone"></i>
+                                    +84983729351 <br>
+                                    <i class="fas fa-envelope-square"></i>
+                                    namntph33821@fpt.edu.vn
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+<script type="text/javascript">
+    //đây là nơi để điều hướng route
+    angular.module('myApp', ['ngRoute']).config(function ($routeProvider) {
+        $routeProvider.when('/home-product', {
+            templateUrl: 'views/home-product.html',
+            controller: ListProductController
+        })
+            .when('/list-product', {
+                templateUrl: 'views/list-product.html',
+                controller: ListProductController
+            }).when('/add-product', {
+                templateUrl: 'views/add-product.html',
+                controller: AddProductController
+            }).when('/product/:id/edit', {
+                templateUrl: 'views/edit-product.html',
+                controller: EditProductController
+            }).when('/product/:id/DP', {
+                templateUrl: 'views/detailed-products.html',
+                controller: EditProductController
+            })
+            .otherwise({
+                redirectTo: '/home-product'
+            })
+    })
+</script>
+
+</html>

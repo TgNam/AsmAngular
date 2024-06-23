@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 style="text-align: center;">DANH SÁCH SẢN PHẨM</h1>
+      <div class="text-right add-button">
+        
+        <a href="#!/add-product" class="btn btn-success" role="button">Thêm</a>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Tên</th>
+            <th>Giá</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="pr in products">
+            <td>{{ pr.name }}</td>
+            <td>{{ pr.price }}</td>
+            <td>
+              <div class="actions">
+                <button ng-click="onDelete(pr.id)" class="btn btn-primary details-button">Xóa</button>
+                <button ng-click="onEdit(pr.id)" type="button" class="btn btn-warning">Sửa</button>
+                <button ng-click="onDP(pr.id)" type="button" class="btn btn-success ">Chi tiết</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
